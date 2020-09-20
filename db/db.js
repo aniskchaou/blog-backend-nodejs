@@ -25,12 +25,12 @@ client
     initDb()
 
 });
-
-initDb()
 */
+//initDb()
+
 function initDb()
 {
-    queryInsertDb="INSERT INTO posts (title, post,author,image,date)VALUES ('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23'),(title, post,author,image,date)VALUES ('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23')";
+    queryInsertDb="INSERT INTO posts (title, post,author,image,date)VALUES ('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23'),('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23')";
     client.query(queryInsertDb).catch(err => {
         console.error(err);
     });
