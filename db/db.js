@@ -12,7 +12,7 @@ client.connect();
 
 const queryCreateDb = "CREATE TABLE posts (id SERIAL PRIMARY KEY,title varchar,post varchar,author varchar,image varchar,date varchar)";
 
-/*
+
 client
 .query(queryCreateDb)
 .then(res => {
@@ -25,8 +25,8 @@ client
     initDb()
 
 });
-*/
-//initDb()
+
+initDb()
 
 function initDb()
 {
