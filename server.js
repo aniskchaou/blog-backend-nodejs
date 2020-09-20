@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.get("/all",(req,res)=>{
-   client.query('SELECT * from posts', (err, result) => {
+
+   client.query('SELECT * from posts order by id desc', (err, result) => {
       if (err){
       	console.log(err);
         res.send({success:false,result:err});
@@ -17,25 +18,76 @@ app.get("/all",(req,res)=>{
       {
         res.send({success:true,result:result.rows});
       }
-      
-     // client.end()
   });
 });
 
 app.post("/add",(req,res)=>{
+
 const post={
-	title:res.body.title,
-	post:res.body.post,
-	author:res.body.author,
-	date:res.body.date
+	title:req.body.title,
+	post:req.body.post,
+	author:req.body.author,
+	date:req.body.date,
+  image:req.body.image
+};
+console.log(post);
+
+client.query("INSERT INTO posts (title, post,author,image,date) VALUES ('"+post.title+"','"+post.post+"','"+post.author+"','"+post.image+"','"+post.date+"')",(err, result) => {
+      if (err){
+        console.log(err);
+        res.send({success:false,result:err});
+      }else
+      {
+        res.send({success:true,result:result});
+      }
+  });
+    
+});
+
+
+app.post("/edit",(req,res)=>{
+
+const post={
+  id:req.body.id,
+  title:req.body.title,
+  post:req.body.post,
+  author:req.body.author,
+  date:req.body.date,
+  image:req.body.image
 };
 
-client.query(`INSERT INTO posts 
-    (title, post,author,date)
-    VALUES (post.title,post.post,post.author,post.date)`).catch(err => {
-        console.error(err);
-    });
 
+client.query("UPDATE posts SET image='"+post.image+"', title='"+post.title+"', post='"+post.post+"', author='"+post.author+"',date='"+post.date+"' WHERE id="+post.id,(err, result) => {
+      if (err){
+        console.log(err);
+        res.send({success:false,result:err});
+      }else
+      {
+        res.send({success:true,result:result});
+      }
+  });
+    
+});
+
+
+
+app.post("/delete",(req,res)=>{
+
+const post={
+  id:req.body.id,
+};
+console.log(post);
+
+client.query("DELETE FROM posts WHERE id="+post.id,(err, result) => {
+      if (err){
+        console.log(err);
+        res.send({success:false,result:err});
+      }else
+      {
+        res.send({success:true,result:result});
+      }
+  });
+    
 });
 
 

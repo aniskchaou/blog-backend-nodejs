@@ -9,17 +9,10 @@ const client = new Client({
 });
 
 client.connect();
+
+const queryCreateDb = "CREATE TABLE posts (id SERIAL PRIMARY KEY,title varchar,post varchar,author varchar,image varchar,date varchar)";
+
 /*
-const queryCreateDb = `
-CREATE TABLE posts (
-    id SERIAL PRIMARY KEY,
-    title varchar,
-    post varchar,
-    author varchar,
-    date varchar
-    );
-
-
 client
 .query(queryCreateDb)
 .then(res => {
@@ -29,48 +22,19 @@ client
     console.error(err);
 })
 .finally(() => {
-    //initDb()
+    initDb()
 
 });
-*/
+
 initDb()
+*/
 function initDb()
 {
-    queryInsertDb=`INSERT INTO posts 
-    (title, post,author,date)
-    VALUES ('hgfjhjg','Jerry','kggjhg','Lyon'),
-    ('jhgkj','George','0665876','Paris');`;
+    queryInsertDb="INSERT INTO posts (title, post,author,image,date)VALUES ('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23'),(title, post,author,image,date)VALUES ('Lorem Ipsum','Duis cursus orci sapien, vel porttitor odio fringilla eget. Donec aliquet nunc dolor, in pulvinar dolor efficitur vel. Cras molestie tortor quis eros elementum, ut convallis ipsum tempor.','imperdiet velit','https://picsum.photos/200/300','2020-08-09'),('mattis quis','Suspendisse tempus magna a tellus vehicula, ac viverra velit mattis. Vivamus tristique euismod diam, non luctus magna. Donec libero dui','George','https://picsum.photos/200/300','2020-06-23')";
     client.query(queryInsertDb).catch(err => {
         console.error(err);
     });
 }
 
-
-
-function addPost (post) {
-    client.query(``).catch(err => {
-        console.error(err);
-    });
-}
-
-function getPost (id) {
-    client.query('SELECT $1::text as name',(err, res) => {
-      if (err) throw err
-          console.log(res)
-      client.end()
-  })
-}
-
-function updatePost (id) {
-    client.query(queryInsertDb).catch(err => {
-        console.error(err);
-    });
-}
-
-function deletePost (id) {
-    client.query(queryInsertDb).catch(err => {
-        console.error(err);
-    });
-}
 
 module.exports=client;    
