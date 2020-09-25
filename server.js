@@ -72,11 +72,10 @@ client.query("UPDATE posts SET image='"+post.image+"', title='"+post.title+"', p
 
 
 app.post("/delete",(req,res)=>{
-
 const post={
   id:req.body.id,
 };
-console.log(post);
+
 
 client.query("DELETE FROM posts WHERE id="+post.id,(err, result) => {
       if (err){

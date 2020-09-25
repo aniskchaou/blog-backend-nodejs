@@ -22,11 +22,11 @@ client
     console.error(err);
 })
 .finally(() => {
-    initDb()
+   // initDb()
 
 });
 
-initDb()
+//initDb()
 
 function initDb()
 {
